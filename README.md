@@ -1,5 +1,5 @@
 ﻿# PowerCLI Core
-Document Version 1.6
+Document Version 1.7
 
 NOTE: A text version of this document can be found as README.md in the download zip file for this fling.
 
@@ -219,7 +219,8 @@ More options for working with and running the container can be [found here](http
 
 ## I am receiving an error when using Connect-VIServer as below
 
-```WARNING: Invalid server certificate. Use Set-PowerCLIConfiguration to set the value for
+```
+WARNING: Invalid server certificate. Use Set-PowerCLIConfiguration to set the value for
 the InvalidCertificateAction option to Prompt if you'd like to connect once or to add a
 permanent exception for this server.
 connect-viserver : 10/17/16 3:00:15 PM 	Connect-VIServer       		An error occurred while
