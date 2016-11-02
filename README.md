@@ -1,5 +1,5 @@
 ﻿# PowerCLI Core
-Document Version 1.7
+Document Version 1.8
 
 NOTE: A text version of this document can be found as README.md in the download zip file for this fling.
 
