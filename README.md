@@ -6,7 +6,7 @@ NOTE: A text version of this document can be found as README.md in the download 
 # Welcome!
 
 PowerCLI Core uses Microsoft PowerShell Core and .Net Core to enable users of VMware Photon OS, Linux, Mac and Docker to now use the same cmdlets which were previously only available on windows.
- 
+
 PowerCLI Core enables a multi-platform scripting language which will allow you to manage your VMware infrastructure on any OS. Scripts written previously against the windows version are now made portable to a number of operating systems and can simply be loaded and run on these new OS versions without change.
 
 PowerCLI Core can be downloaded from [the VMware Flings site here](https://labs.vmware.com/flings/powercli-core) and used with he below instructions to be deployed.
@@ -94,7 +94,7 @@ enabled=1
 skip_if_unavailable=True
 ```
 
-Step 2 - Install PowerShell onto Photon OS and create the modules folder needed later: 
+Step 2 - Install PowerShell onto Photon OS and create the modules folder needed later:
 ```
 tdnf install -y powershell
 mkdir -p ~/.local/share/powershell/Modules
@@ -155,7 +155,7 @@ sudo apt-get update && \
     libcurl4-openssl-dev
 ```
 
-Step 2 - Download PowerShell for Linux from [here](https://github.com/PowerShell/PowerShell) on your Ubuntu machine and install as below: 
+Step 2 - Download PowerShell for Linux from [here](https://github.com/PowerShell/PowerShell) on your Ubuntu machine and install as below:
 ```
 curl -SLO https://github.com/PowerShell/PowerShell/releases/download/v6.0.0-alpha.11/powershell_6.0.0-alpha.11-1ubuntu1.14.04.1_amd64.deb
 sudo dpkg -i powershell_6.0.0-alpha.11-1ubuntu1.14.04.1_amd64.deb
@@ -217,7 +217,7 @@ More options for working with and running the container can be [found here](http
 
 # Frequently Asked Questions
 
-## I am receiving an error when using Connect-VIServer as below
+**1. I am receiving an error when using Connect-VIServer as below**
 
 ```
 WARNING: Invalid server certificate. Use Set-PowerCLIConfiguration to set the value for
