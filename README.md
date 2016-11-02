@@ -1,4 +1,4 @@
-﻿# PowerCLI Core
+# PowerCLI Core
 Document Version 1.8
 
 NOTE: A text version of this document can be found as README.md in the download zip file for this fling.
@@ -250,4 +250,3 @@ Set-PowerCLIConfiguration -InvalidCertificateAction Ignore
 * The Content Library Cmdlets have not yet been fully ported to PowerCLI Core and will provide an error when run
 * The Credential store Cmdlets have not yet been fully ported to PowerCLI Core and will provide an error when run
 * The Import/Export-VApp Cmdlets currently requires a trusted server certificate
-
