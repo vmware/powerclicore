@@ -9,6 +9,8 @@ PowerCLI Core uses Microsoft PowerShell Core and .Net Core to enable users of VM
  
 PowerCLI Core enables a multi-platform scripting language which will allow you to manage your VMware infrastructure on any OS. Scripts written previously against the windows version are now made portable to a number of operating systems and can simply be loaded and run on these new OS versions without change.
 
+PowerCLI Core can be downloaded from [the VMware Flings site here](https://labs.vmware.com/flings/powercli-core) and used with he below instructions to be deployed.
+
 ## PowerCLI Core vs PowerCLI for Windows
 This initial version provides access to the core vSphere module including over 280 cmdlets allowing you to manage most of the major features of vCenter and ESXi.  The below table shows the difference between the windows version and what is currently offered for PowerCLI Core:
 
@@ -39,8 +41,8 @@ Step 3 - Perform the following steps to ensure you are using the latest OpenSSL 
 brew install openssl
 brew install curl --with-openssl
 
-sudo install_name_tool -change /usr/lib/libcurl.4.dylib /usr/local/opt/curl/lib/libcurl.4.dylib /usr/local/microsoft/powershell/6.0.0-alpha.10/System.Net.Http.Native.dylib
-sudo install_name_tool -add_rpath /usr/local/opt/openssl/lib /usr/local/microsoft/powershell/6.0.0-alpha.10/System.Security.Cryptography.Native.dylib
+sudo install_name_tool -change /usr/lib/libcurl.4.dylib /usr/local/opt/curl/lib/libcurl.4.dylib /usr/local/microsoft/powershell/6.0.0-alpha.11/System.Net.Http.Native.dylib
+sudo install_name_tool -add_rpath /usr/local/opt/openssl/lib /usr/local/microsoft/powershell/6.0.0-alpha.11/System.Security.Cryptography.Native.dylib
 
 ```
 
@@ -155,8 +157,8 @@ sudo apt-get update && \
 
 Step 2 - Download PowerShell for Linux from [here](https://github.com/PowerShell/PowerShell) on your Ubuntu machine and install as below: 
 ```
-curl -SLO https://github.com/PowerShell/PowerShell/releases/download/v6.0.0-alpha.10/powershell_6.0.0-alpha.10-1ubuntu1.14.04.1_amd64.deb
-sudo dpkg -i powershell_6.0.0-alpha.10-1ubuntu1.14.04.1_amd64.deb
+curl -SLO https://github.com/PowerShell/PowerShell/releases/download/v6.0.0-alpha.11/powershell_6.0.0-alpha.11-1ubuntu1.14.04.1_amd64.deb
+sudo dpkg -i powershell_6.0.0-alpha.11-1ubuntu1.14.04.1_amd64.deb
 ```
 
 Step 3 - Create the following directory if it does not exist by running the following command:
@@ -197,7 +199,7 @@ Name                           Port  User
 192.168.1.51                   443   VSPHERE.LOCAL\Administrator
 ```
 ## Docker Image
-More information can be found on the docker PowerCLI Core image in [docker hub here](https://hub.docker.com/r/vmware/powerclicore/)
+More information can be found on the docker PowerCLI Core image on [docker hub here](https://hub.docker.com/r/vmware/powerclicore/)
 
 Step 1 Run the following to download the container from the docker hub:
 
@@ -206,8 +208,6 @@ docker pull vmware/powerclicore
 ```
 
 ### Launch the container
-
-You can specify what the container runs when you start with the --entrypoint option:
 
 ```console
 docker run --rm -it vmware/powerclicore
@@ -242,6 +242,7 @@ Set-PowerCLIConfiguration -InvalidCertificateAction Ignore
 ```
 
 # Known Issues
+* PowerShell Core does not provide aliases for some of the well known PowerShell cmdlets, watch out for aliases like sleep and sort as these will run native linux commands, it is recommended you use the full cmdlet names like Sort-Object and Start-Sleep for example.
 * The Get-VMHostHardware cmdlet has not yet been fully ported to PowerCLI Core and will provide an error when run
 * The Get-VMHostPciDevice cmdlet has not yet been fully ported to PowerCLI Core and will provide an error when run
 * The Open-VMConsoleWindow cmdlet has not yet been fully ported to PowerCLI Core and will provide an error when run
