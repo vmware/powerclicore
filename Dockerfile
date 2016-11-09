@@ -1,4 +1,4 @@
-FROM photon:1.0RC
+FROM photon:1.0
 MAINTAINER renoufa@vmware.com
 
 ARG POWERCLI_PACKAGE=PowerCLI.ViCore.4523941.zip
