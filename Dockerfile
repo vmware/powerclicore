@@ -3,8 +3,8 @@ FROM photon:1.0
 MAINTAINER renoufa@vmware.com
 
 # Set Versions for later use
-ARG POWERCLI_PACKAGE=PowerCLI.ViCore.4523941.zip
-ARG POWERCLI_VDS_PACKAGE=PowerCLI.Vds.4523941.zip
+ARG POWERCLI_PACKAGE=PowerCLI.ViCore.zip
+ARG POWERCLI_VDS_PACKAGE=PowerCLI.Vds.zip
 
 # Add PowerShell repository location to Photon OS
 RUN echo $'[powershell]\n\

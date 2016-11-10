@@ -73,7 +73,6 @@ Set-PowerCLIConfiguration -InvalidCertificateAction Ignore
 * The Get-VMHostHardware cmdlet has not yet been fully ported to PowerCLI Core and will provide an error when run
 * The Get-VMHostPciDevice cmdlet has not yet been fully ported to PowerCLI Core and will provide an error when run
 * The Open-VMConsoleWindow cmdlet has not yet been fully ported to PowerCLI Core and will provide an error when run
-* The *-Tag, *-TagCategory, *-TagAssignment cmdlets require a trusted server certificate
+* The *-Tag, *-TagCategory, *-TagAssignment cmdlets are not supported with vSphere 6.5
 * The Content Library Cmdlets have not yet been fully ported to PowerCLI Core and will provide an error when run
 * The Credential store Cmdlets have not yet been fully ported to PowerCLI Core and will provide an error when run
-* The Import/Export-VApp Cmdlets currently requires a trusted server certificate
