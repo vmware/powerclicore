@@ -20,7 +20,7 @@ skip_if_unavailable=True\n '\
 WORKDIR /powershell
 
 # Install PowerShell on Photon 
-RUN tdnf install -y unzip powershell
+RUN tdnf install -y unzip powershell curl openssl
 
 # Download and Unzip the PowerCLI module to the users module directory
 ADD https://download3.vmware.com/software/vmw-tools/powerclicore/PowerCLI_Core.zip /powershell
