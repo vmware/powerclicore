@@ -1,6 +1,7 @@
 FROM photon:1.0
 
 MAINTAINER renoufa@vmware.com
+LABEL PSVersion="v6.0.0-alpha.14"
 
 # Set Versions for later use
 ARG POWERCLI_PACKAGE=PowerCLI.ViCore.zip
