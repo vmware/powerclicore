@@ -35,8 +35,8 @@ RUN mkdir -p ~/.local/share/powershell/Modules
 RUN unzip /powershell/$POWERCLI_PACKAGE -d ~/.local/share/powershell/Modules
 RUN unzip /powershell/$POWERCLI_VDS_PACKAGE -d ~/.local/share/powershell/Modules
 
-# Copy PowerCLI Profile Script to the docker image
-ADD Start-PowerCLI.ps1 /root/.config/powershell/Microsoft.PowerShell_profile.ps1
+# Change the default PowerShell profile to include PowerCLI startup
+RUN mv /powershell/Start-PowerCLI.ps1 /root/.config/powershell/Microsoft.PowerShell_profile.ps1
 
 # Add PowerNSX
 ADD https://github.com/vmware/powernsx/archive/master.zip /powershell
