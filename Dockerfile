@@ -40,4 +40,10 @@ RUN mkdir ~/.local/share/powershell/Modules/PowerNSX
 RUN unzip /powershell/master.zip -d /powershell/
 RUN cp /powershell/powernsx-master/PowerNSX.ps*1 ~/.local/share/powershell/Modules/PowerNSX/
 
+# Add PowervRA 
+ADD https://github.com/jakkulabs/PowervRA/releases/download/v2.0.0/PowervRA.zip /powershell
+RUN unzip /powershell/PowervRA.zip -d /powershell/
+RUN mv /powershell/PowervRA ~/.local/share/powershell/Modules/
+RUN rm -f /powershell/PowervRA
+
 CMD ["powershell"]
