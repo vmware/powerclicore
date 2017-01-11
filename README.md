@@ -42,6 +42,14 @@ docker run --rm -it vmware/powerclicore
 
 More options for working with and running the container can be [found here](http://www.virtuallyghetto.com/2016/10/5-different-ways-to-run-powercli-script-using-powercli-core-docker-container.html)
 
+# Changelog
+
+| Date | Tag | Change |
+| -----|-----|------- |
+| 01-11-17 | Latest | Added PowerVRA Module for managing vRealize Automation |
+| 01-05-17 | Latest | Added PowerNSX Module for managing NSXv |
+
+
 # Frequently Asked Questions
 
 **1. I am receiving an error when using Connect-VIServer as below**
