@@ -47,9 +47,11 @@ RUN cp /powershell/powernsx-master/PowerNSX.ps*1 ~/.local/share/powershell/Modul
 # Add Log Insight Module - https://github.com/lucdekens/LogInsight
 # RUN git clone https://github.com/lucdekens/LogInsight.git ~/.local/share/powershell/Modules/LogInsight
 
-# Add PowerVRA Module - https://github.com/jakkulabs/PowervRA
-# RUN git clone https://github.com/jakkulabs/PowervRA.git /tmp/PowerVRA
-# RUN mv /powershell/PowerVRA/PowervRA ~/.local/share/powershell/Modules/
+# Add PowervRA 
+ADD https://github.com/jakkulabs/PowervRA/releases/download/v2.0.0/PowervRA.zip /powershell
+RUN unzip /powershell/PowervRA.zip -d /powershell/
+RUN mv /powershell/PowervRA ~/.local/share/powershell/Modules/
+RUN rm -f /powershell/PowervRA
 
 CMD ["powershell"]
 
