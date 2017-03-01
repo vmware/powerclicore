@@ -2,7 +2,7 @@ Mac installation
 ================
 
 Install
-=======
+-------
 
 These are the detailed instructions.
 
