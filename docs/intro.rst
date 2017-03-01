@@ -3,7 +3,7 @@ PowerCLI Core
 =============
 
 Welcome!
-========
+--------
 PowerCLI Core uses Microsoft PowerShell Core and .Net Core to enable users of VMware Photon OS, Linux, Mac and Docker to now use the same cmdlets which were previously only available on windows.
 
 PowerCLI Core enables a multi-platform scripting language which will allow you to manage your VMware infrastructure on any OS. Scripts written previously against the windows version are now made portable to a number of operating systems and can simply be loaded and run on these new OS versions without change.
@@ -11,7 +11,7 @@ PowerCLI Core enables a multi-platform scripting language which will allow you t
 PowerCLI Core can be downloaded from [the VMware Flings site here](https://labs.vmware.com/flings/powercli-core) and used with he below instructions to be deployed.
 
 PowerCLI Core vs PowerCLI for Windows
-=====================================
+-------------------------------------
 This initial version provides access to the core vSphere module including over 280 cmdlets allowing you to manage most of the major features of vCenter and ESXi.  The below table shows the difference between the windows version and what is currently offered for PowerCLI Core:
 
 +-----------------+------------------------------------+---------------------+---------------+
@@ -39,7 +39,7 @@ This initial version provides access to the core vSphere module including over 2
 +-----------------+------------------------------------+---------------------+---------------+
 
 Changelog
-=========
+---------
 
 +----------+--------+--------------------------------------------------------+
 | Date     | Tag    | Change                                                 |
@@ -49,4 +49,3 @@ Changelog
 | 01-05-17 | Latest | Added PowerNSX Module for managing NSXv                |
 +----------+--------+--------------------------------------------------------+
 
-.. _found here: http://www.virtuallyghetto.com/2016/10/5-different-ways-to-run-powercli-script-using-powercli-core-docker-container.html

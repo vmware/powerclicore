@@ -7,7 +7,7 @@ Install
 These are the detailed instructions.
 
 Step 1 - Download and Install PowerShell for Mac OS X using the instructions and packages
-from here__ this will also include the install of homebrew
+from here_ this will also include the install of homebrew
 
 Step 2 - Make sure you did not miss this step from the PowerShell installation instruction:
 ::
