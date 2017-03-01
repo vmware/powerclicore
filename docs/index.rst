@@ -17,6 +17,12 @@ Index
 
 .. toctree::
    :maxdepth: 2
+   :caption: Using PowerCLI
+
+   launch
+   
+.. toctree::
+   :maxdepth: 2
    :caption: FAQ/Issue
 
    faq
