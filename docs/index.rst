@@ -1,3 +1,5 @@
+.. image:: https://labs.vmware.com/flings/files/flings/0/0/0/0/1/2/0/powerclicore140x140.jpg
+
 PowerCLI Core
 =============
 
@@ -72,42 +74,40 @@ Changelog
 +----------+--------+--------------------------------------------------------+
 
 
-# Frequently Asked Questions
+Frequently Asked Questions
+==========================
 
 **1. I am receiving an error when using Connect-VIServer as below**
 
-```
-WARNING: Invalid server certificate. Use Set-PowerCLIConfiguration to set the value for
-the InvalidCertificateAction option to Prompt if you'd like to connect once or to add a
-permanent exception for this server.
-connect-viserver : 10/17/16 3:00:15 PM 	Connect-VIServer       		An error occurred while
-sending the request.
-At line:1 char:1
-+ connect-viserver 10.192.116.20 -User administrator@vsphere.local -Pas ...
-+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : NotSpecified: (:) [Connect-VIServer], ViError
-    + FullyQualifiedErrorId : Client20_ConnectivityServiceImpl_Reconnect_Exception,VMwa
-   re.VimAutomation.ViCore.Cmdlets.Commands.ConnectVIServer
-```
+::
+
+ WARNING: Invalid server certificate. Use Set-PowerCLIConfiguration to set the value for the InvalidCertificateAction option to Prompt if you'd like to connect once or to add a permanent exception for this server.
+ connect-viserver : 10/17/16 3:00:15 PM 	Connect-VIServer       		An error occurred while sending the request.
+ At line:1 char:1
+ connect-viserver 10.192.116.20 -User administrator@vsphere.local -Pas ...
+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ CategoryInfo          : NotSpecified: (:) [Connect-VIServer], ViError
+ FullyQualifiedErrorId : Client20_ConnectivityServiceImpl_Reconnect_Exception,VMware.VimAutomation.ViCore.Cmdlets.Commands.ConnectVIServer
 
 This error is because the certificate on your vCenter server is not trusted by the machine you are making the connection from.
 
 To fix this issue, replace the certificate chain on your machine or use the Set-PowerCLIConfiguration cmdlet to ignore certificate issues as below:
 
-```
-Set-PowerCLIConfiguration -InvalidCertificateAction Ignore
-```
+::
 
-# Known Issues
+ Set-PowerCLIConfiguration -InvalidCertificateAction Ignore
+
+Known Issues
+============
 * PowerShell Core does not provide aliases for some of the well known PowerShell cmdlets, watch out for aliases like sleep and sort as these will run native linux commands, it is recommended you use the full cmdlet names like Sort-Object and Start-Sleep for example.
 * The Get-VMHostHardware cmdlet has not yet been fully ported to PowerCLI Core and will provide an error when run
 * The Get-VMHostPciDevice cmdlet has not yet been fully ported to PowerCLI Core and will provide an error when run
 * The Open-VMConsoleWindow cmdlet has not yet been fully ported to PowerCLI Core and will provide an error when run
-* The *-Tag, *-TagCategory, *-TagAssignment cmdlets are not supported with vSphere 6.5
+* The Tag, TagCategory, TagAssignment cmdlets are not supported with vSphere 6.5
 * The Content Library Cmdlets have not yet been fully ported to PowerCLI Core and will provide an error when run
 * The Credential store Cmdlets have not yet been fully ported to PowerCLI Core and will provide an error when run
 
-.. _found here http://www.virtuallyghetto.com/2016/10/5-different-ways-to-run-powercli-script-using-powercli-core-docker-container.html
+.. _found here: http://www.virtuallyghetto.com/2016/10/5-different-ways-to-run-powercli-script-using-powercli-core-docker-container.html
 
 .. toctree::
    :maxdepth: 2
@@ -146,3 +146,4 @@ Set-PowerCLIConfiguration -InvalidCertificateAction Ignore
 
    flow_audit
    flow_backup_validation
+
