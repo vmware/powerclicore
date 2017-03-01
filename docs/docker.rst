@@ -16,3 +16,5 @@ Launch the container
  docker run --rm -it vmware/powerclicore
 
 More options for working with and running the container can be `found here`_.
+
+.. _found here: http://www.virtuallyghetto.com/2016/10/5-different-ways-to-run-powercli-script-using-powercli-core-docker-container.html

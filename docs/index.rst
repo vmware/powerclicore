@@ -1,4 +1,5 @@
-
+Index
+=====
 
 .. toctree::
    :maxdepth: 2
@@ -11,7 +12,7 @@
    :caption: Installation
 
    docker
-   mac
+   mac_install
    ubuntu
 
 .. toctree::
