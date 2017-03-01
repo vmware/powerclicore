@@ -40,28 +40,6 @@ This initial version provides access to the core vSphere module including over 2
 | Content Library | Content Library Cmdlets            | √                   | X             |
 +-----------------+------------------------------------+---------------------+---------------+
 
-Usage
-=====
-
-Docker Image
-============
-
-Step 1 Run the following to download the container from the docker hub:
-
-:: 
-
- docker pull vmware/powerclicore
-
-
-Launch the container
-====================
-
-:: 
-
- docker run --rm -it vmware/powerclicore
-
-More options for working with and running the container can be `found here`_.
-
 Changelog
 =========
 
@@ -90,15 +68,29 @@ Changelog
    :caption: Command Documentation
 
    cmd_connect
+   cmd_add
+   cmd_copy
+   cmd_disconnect
+   cmd_dismount
+   cmd_export
+   cmd_format
    cmd_get
+   cmd_import
+   cmd_install
+   cmd_invoke
+   cmd_mount
    cmd_move
    cmd_new
-   cmd_protect
+   cmd_open
    cmd_remove
+   cmd_restart
    cmd_set
    cmd_start
    cmd_stop
-   cmd_sync
+   cmd_suspend
+   cmd_test
+   cmd_update
+   cmd_wait
 
 .. toctree::
    :maxdepth: 2
