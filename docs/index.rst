@@ -62,6 +62,13 @@ Changelog
 
 .. toctree::
    :maxdepth: 2
+   :caption: FAQ/Issue
+
+   faq
+   known_issues
+
+.. toctree::
+   :maxdepth: 2
    :caption: Cmdlet Reference
 
    cmd_connect
@@ -89,10 +96,5 @@ Changelog
    cmd_update
    cmd_wait
 
-.. toctree::
-   :maxdepth: 2
-   :caption: FAQ/Issue
 
-   faq
-   known_issues
 
