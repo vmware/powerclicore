@@ -112,16 +112,11 @@ Known Issues
 .. toctree::
    :maxdepth: 2
    :hidden:
-   :caption: User Documentation
+   :caption: Installation
 
-   requirements
-   installation
-   getting_started
-   project_architecture
-   support
-   contribution
-   licensing  
-   faq
+   docker
+   mac
+   ubuntu
 
 .. toctree::
    :maxdepth: 2
@@ -142,8 +137,8 @@ Known Issues
 .. toctree::
    :maxdepth: 2
    :hidden:
-   :caption: Workflow Examples
+   :caption: FAQ/Issue
 
-   flow_audit
-   flow_backup_validation
+   faq
+   known_issues
 
