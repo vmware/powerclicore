@@ -54,7 +54,6 @@ Changelog
 
 .. toctree::
    :maxdepth: 2
-   :hidden:
    :caption: Installation
 
    docker
@@ -63,8 +62,6 @@ Changelog
 
 .. toctree::
    :maxdepth: 2
-   :hidden:
-   :titlesonly:
    :caption: Cmdlet Reference
 
    cmd_connect
@@ -94,7 +91,6 @@ Changelog
 
 .. toctree::
    :maxdepth: 2
-   :hidden:
    :caption: FAQ/Issue
 
    faq
