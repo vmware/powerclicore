@@ -11,9 +11,9 @@ Index
    :maxdepth: 2
    :caption: Installation
 
-   docker
+   docker_install
    mac_install
-   ubuntu
+   linux_install
 
 .. toctree::
    :maxdepth: 2
