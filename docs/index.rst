@@ -62,9 +62,10 @@ Changelog
    ubuntu
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
    :hidden:
-   :caption: Command Documentation
+   :titlesonly:
+   :caption: Cmdlet Reference
 
    cmd_connect
    cmd_add
