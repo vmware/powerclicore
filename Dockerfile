@@ -1,10 +1,11 @@
 FROM ubuntu:14.04
 MAINTAINER renoufa@vmware.com
 
-ARG POWERSHELL_RELEASE=v6.0.0-alpha.14
-ARG POWERSHELL_PACKAGE=powershell_6.0.0-alpha.14-1ubuntu1.14.04.1_amd64.deb
+ARG POWERSHELL_RELEASE=v6.0.0-alpha.18
+ARG POWERSHELL_PACKAGE=powershell_6.0.0-alpha.18-1ubuntu1.14.04.1_amd64.deb
 ARG POWERCLI_PACKAGE=PowerCLI.ViCore.zip
 ARG POWERCLI_VDS_PACKAGE=PowerCLI.Vds.zip
+ARG POWERCLI_CIS_PACKAGE=PowerCLI.Cis.zip
 
 RUN apt-get update && \
     apt-get install --no-install-recommends -yq \
@@ -34,6 +35,7 @@ RUN mkdir -p /root/.config/powershell/
 RUN mkdir -p ~/.local/share/powershell/Modules
 RUN unzip /powershell/$POWERCLI_PACKAGE -d ~/.local/share/powershell/Modules
 RUN unzip /powershell/$POWERCLI_VDS_PACKAGE -d ~/.local/share/powershell/Modules
+RUN unzip /powershell/$POWERCLI_CIS_PACKAGE -d ~/.local/share/powershell/Modules
 
 # Change the default PowerShell profile to include PowerCLI startup
 RUN mv /powershell/Start-PowerCLI.ps1 /root/.config/powershell/Microsoft.PowerShell_profile.ps1
