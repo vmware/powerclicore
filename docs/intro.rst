@@ -21,6 +21,8 @@ This initial version provides access to the core vSphere module including over 2
 +-----------------+------------------------------------+---------------------+---------------+
 | VDS             | vSphere Distributed Switch Cmdlets | √                   | √             |
 +-----------------+------------------------------------+---------------------+---------------+
+| CIS             | vSphere REST API Cmdlets           | √                   | √             |
++-----------------+------------------------------------+---------------------+---------------+
 | Storage         | Storage Cmdlets                    | √                   | X             |
 +-----------------+------------------------------------+---------------------+---------------+
 | License         | License View Cmdlet                | √                   | X             |
@@ -34,8 +36,6 @@ This initial version provides access to the core vSphere module including over 2
 | VCD             | vCloud Director Cmdlets            | √                   | X             |
 +-----------------+------------------------------------+---------------------+---------------+
 | vCloud Air      | vCloud Air Cmdlets                 | √                   | X             |
-+-----------------+------------------------------------+---------------------+---------------+
-| Content Library | Content Library Cmdlets            | √                   | X             |
 +-----------------+------------------------------------+---------------------+---------------+
 
 Changelog
