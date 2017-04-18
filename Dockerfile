@@ -6,6 +6,7 @@ LABEL PSVersion="v6.0.0-alpha.14"
 # Set Versions for later use
 ARG POWERCLI_PACKAGE=PowerCLI.ViCore.zip
 ARG POWERCLI_VDS_PACKAGE=PowerCLI.Vds.zip
+ARG POWERCLI_CIS_PACKAGE=PowerCLI.Cis.zip
 
 # Add PowerShell repository location to Photon OS
 RUN echo $'[powershell]\n\
@@ -30,6 +31,7 @@ RUN mkdir -p /root/.config/powershell/
 RUN mkdir -p ~/.local/share/powershell/Modules
 RUN unzip /powershell/$POWERCLI_PACKAGE -d ~/.local/share/powershell/Modules
 RUN unzip /powershell/$POWERCLI_VDS_PACKAGE -d ~/.local/share/powershell/Modules
+RUN unzip /powershell/$POWERCLI_CIS_PACKAGE -d ~/.local/share/powershell/Modules
 
 # Change the default PowerShell profile to include PowerCLI startup
 RUN mv /powershell/Start-PowerCLI.ps1 /root/.config/powershell/Microsoft.PowerShell_profile.ps1
