@@ -55,5 +55,15 @@ RUN unzip /powershell/PowervRA.zip -d /powershell/
 RUN mv /powershell/PowervRA ~/.local/share/powershell/Modules/
 RUN rm -f /powershell/PowervRA
 
+# Add the PowerCLI Example Scripts and Modules
+RUN git clone https://github.com/vmware/PowerCLI-Example-Scripts
+
+# Add modules from PowerCLI-Example-Scripts folder to correct places
+RUN mv /powershell/PowerCLI-Example-Scripts/Modules/VMware.VMEncryption ~/.local/share/powershell/Modules/
+RUN mv /powershell/PowerCLI-Example-Scripts/Modules/VMFSIncrease ~/.local/share/powershell/Modules/
+RUN mv /powershell/PowerCLI-Example-Scripts/Modules/Vi-Module ~/.local/share/powershell/Modules/
+RUN chmod +x /powershell/PowerCLI-Example-Scripts/Scripts/modules.sh
+RUN /powershell/PowerCLI-Example-Scripts/Scripts/modules.sh
+
 CMD ["powershell"]
 
