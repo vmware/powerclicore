@@ -44,7 +44,7 @@ RUN cp /powershell/powernsx-master/PowerNSX.ps*1 ~/.local/share/powershell/Modul
 
 # Add PowervRA 
 RUN powershell -Command 'Set-PSRepository -Name PSGallery -InstallationPolicy Trusted'
-RUN powershell -Command 'Install-Module -Name PowervRA -Confirm:$false'
+RUN powershell -Command 'Install-Module -Name PowervRA -Confirm:$false -RequiredVersion 2.1.0'
 
 # Add the PowerCLI Example Scripts and Modules
 RUN git clone https://github.com/vmware/PowerCLI-Example-Scripts
