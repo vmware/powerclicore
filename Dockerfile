@@ -46,7 +46,6 @@ RUN cp /powershell/powernsx-master/PowerNSX.ps*1 ~/.local/share/powershell/Modul
 # RUN powershell -Command 'Set-PSRepository -Name PSGallery -InstallationPolicy Trusted'
 # RUN powershell -Command 'Install-Module -Name PowervRA -Confirm:$false'
 # Temporarily grab the package from github
-ARG POWERVRAPACKAGE=powervra.v2.2.0.zip
 ADD https://github.com/jakkulabs/PowervRA/archive/v2.2.0.zip /powershell
 RUN unzip /powershell/v2.2.0.zip -d /powershell
 RUN mv /powershell/PowervRA-2.2.0/PowervRA ~/.local/share/powershell/Modules/
