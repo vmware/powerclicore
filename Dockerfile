@@ -37,10 +37,10 @@ RUN unzip /powershell/$POWERCLI_CIS_PACKAGE -d ~/.local/share/powershell/Modules
 RUN mv /powershell/Start-PowerCLI.ps1 /root/.config/powershell/Microsoft.PowerShell_profile.ps1
 
 # Add PowerNSX
-ADD https://github.com/vmware/powernsx/archive/master.zip /powershell
+ADD https://raw.githubusercontent.com/vmware/powernsx/master/module/platform/core/PowerNSX/PowerNSX.psd1 /powershell
+ADD https://raw.githubusercontent.com/vmware/powernsx/master/module/platform/core/PowerNSX/PowerNSX.psm1 /powershell
 RUN mkdir ~/.local/share/powershell/Modules/PowerNSX
-RUN unzip /powershell/master.zip -d /powershell/
-RUN cp /powershell/powernsx-master/PowerNSX.ps*1 ~/.local/share/powershell/Modules/PowerNSX/
+RUN cp /powershell/PowerNSX.ps*1 ~/.local/share/powershell/Modules/PowerNSX/
 
 # Add PowervRA 
 RUN powershell -Command 'Set-PSRepository -Name PSGallery -InstallationPolicy Trusted'
