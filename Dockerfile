@@ -21,7 +21,11 @@ ADD https://raw.githubusercontent.com/vmware/powernsx/master/module/platform/cor
 COPY powershell.repo /etc/yum.repos.d
 
 	# Install PowerShell on Photon 
-RUN tdnf install -y unzip powershell less git \
+RUN tdnf install -y \
+	unzip \
+	powershell \
+	less \
+	git \
 	&& tdnf clean all \
 	&& unzip /powershell/PowerCLI_Core.zip -d /powershell \
 	&& mkdir -p /root/.config/powershell/ \
@@ -29,10 +33,6 @@ RUN tdnf install -y unzip powershell less git \
 	&& unzip /powershell/$POWERCLI_PACKAGE -d ~/.local/share/powershell/Modules \
 	&& unzip /powershell/$POWERCLI_VDS_PACKAGE -d ~/.local/share/powershell/Modules \
 	&& unzip /powershell/$POWERCLI_CIS_PACKAGE -d ~/.local/share/powershell/Modules \
-	&& rm -rf /powershell/PowerCLI_Core.zip \
-	&& rm -rf /powershell/$POWERCLI_PACKAGE \
-	&& rm -rf /powershell/$POWERCLI_VDS_PACKAGE \
-	&& rm -rf /powershell/$POWERCLI_CIS_PACKAGE \
 
 	# Change the default PowerShell profile to include PowerCLI startup
 	&& mv /powershell/Start-PowerCLI.ps1 /root/.config/powershell/Microsoft.PowerShell_profile.ps1 \
@@ -53,6 +53,24 @@ RUN tdnf install -y unzip powershell less git \
 	&& mv /powershell/PowerCLI-Example-Scripts/Modules/Vi-Module ~/.local/share/powershell/Modules/ \
 	&& chmod +x /powershell/PowerCLI-Example-Scripts/Scripts/modules.sh \
 	&& /powershell/PowerCLI-Example-Scripts/Scripts/modules.sh \
-	&& rm -fr /powershell/PowerCLI-Example-Scripts/
+	
+
+	#Image cleaning
+	&& rm -rf /powershell/PowerCLI_Core.zip \
+	&& rm -rf /powershell/$POWERCLI_PACKAGE \
+	&& rm -rf /powershell/$POWERCLI_VDS_PACKAGE \
+	&& rm -rf /powershell/$POWERCLI_CIS_PACKAGE \
+	&& rm -rf /powershell/PowerCLI-Example-Scripts/ \
+	&& tdnf erase -y \
+	python2-libs \
+	python2 \
+	gdbm \
+	perl \
+	perl-DBI \
+	perl-YAML \
+	perl-CGI \
+	git \
+	less \
+	unzip 
 
 CMD ["powershell"]
