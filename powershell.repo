@@ -1,0 +1,6 @@
+[powershell]
+name=VMware Photon Linux 1.0(x86_64)
+baseurl=https://vmware.bintray.com/powershell
+gpgcheck=0
+enabled=1
+skip_if_unavailable=True
