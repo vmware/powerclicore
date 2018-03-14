@@ -1,28 +1,11 @@
-FROM vmware/photon2
+FROM microsoft/powershell:ubuntu16.04
 
 LABEL authors="renoufa@vmware.com,jaker@vmware.com"
 
-# Set terminal. If we don't do this, weird readline things happen.
-ENV TERM linux
-RUN echo "/usr/bin/pwsh" >> /etc/shells && \
-    echo "/bin/pwsh" >> /etc/shells
-
-# Install PowerShell on Photon 
-RUN tdnf install -y powershell unzip && \
-    tdnf clean all
+RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y unzip && apt-get clean
 
 # Set working directory so stuff doesn't end up in /
 WORKDIR /root
-
-# Install PackageManagement and PowerShellGet
-# This is temporary until it is included in the PowerShell Core package for Photon
-RUN curl -O -J -L https://www.powershellgallery.com/api/v2/package/PackageManagement && \
-    unzip PackageManagement -d /usr/lib/powershell/Modules/PackageManagement && \
-    rm -f PackageManagement
-
-RUN curl -O -J -L https://www.powershellgallery.com/api/v2/package/PowerShellGet && \
-    unzip PowerShellGet -d /usr/lib/powershell/Modules/PowerShellGet && \
-    rm -f PowerShellGet
 
 # Install VMware modules from PSGallery
 SHELL [ "pwsh", "-command" ]
@@ -38,4 +21,4 @@ RUN curl -o ./PowerCLI-Example-Scripts.zip -J -L https://github.com/vmware/Power
     mv ./PowerCLI-Example-Scripts-master ./PowerCLI-Example-Scripts && \
     mv ./PowerCLI-Example-Scripts/Modules/* /usr/local/share/powershell/Modules/
 
-CMD ["/bin/pwsh"]
+CMD ["/usr/bin/pwsh"]
