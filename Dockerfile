@@ -2,6 +2,11 @@ FROM vmware/photon2
 
 LABEL authors="renoufa@vmware.com,jaker@vmware.com"
 
+# Set terminal. If we don't do this, weird readline things happen.
+ENV TERM linux
+RUN echo "/usr/bin/pwsh" >> /etc/shells && \
+    echo "/bin/pwsh" >> /etc/shells
+
 # Install PowerShell on Photon 
 RUN tdnf install -y powershell unzip && \
     tdnf clean all
@@ -32,10 +37,5 @@ RUN curl -o ./PowerCLI-Example-Scripts.zip -J -L https://github.com/vmware/Power
     rm -f PowerCLI-Example-Scripts.zip && \
     mv ./PowerCLI-Example-Scripts-master ./PowerCLI-Example-Scripts && \
     mv ./PowerCLI-Example-Scripts/Modules/* /usr/local/share/powershell/Modules/
-
-# Set terminal. If we don't do this, weird readline things happen.
-ENV TERM linux
-RUN echo "/usr/bin/pwsh" >> /etc/shells && \
-    echo "/bin/pwsh" >> /etc/shells
 
 CMD ["/bin/pwsh"]
