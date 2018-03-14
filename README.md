@@ -2,13 +2,13 @@
 
 # Welcome!
 
-PowerCLI Core uses Microsoft PowerShell Core and .Net Core to enable users of VMware Photon OS, Linux, Mac and Docker to now use the same cmdlets which were previously only available on windows.
+This Docker image contains PowerShell Core, PowerCLI 10, PowerNSX, and a number of community modules and script examples
 
-PowerCLI Core enables a multi-platform scripting language which will allow you to manage your VMware infrastructure on any OS. Scripts written previously against the windows version are now made portable to a number of operating systems and can simply be loaded and run on these new OS versions without change.
+For more information, visit the following links:
 
-PowerCLI Core can be downloaded from [the VMware Flings site here](https://labs.vmware.com/flings/powercli-core) and used with he below instructions to be deployed.
-
-## Getting started and documentation
-Please make sure you check out our great docs and also help out by contributing if something is missing.  You can get the latest live docs by visiting [http://powercli-core.readthedocs.io/](http://powercli-core.readthedocs.io/)
+[PowerCLI](https://vmware.com/go/powercli)
+[PowerNSX](https://powernsx.github.io/)
+[PowerVRA](https://github.com/jakkulabs/PowervRA)
+[PowerCLI-Example-Scripts](https://github.com/vmware/PowerCLI-Example-Scripts)
 
     
