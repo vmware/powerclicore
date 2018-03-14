@@ -16,13 +16,14 @@ RUN curl -O -J -L https://www.powershellgallery.com/api/v2/package/PowerShellGet
     unzip PowerShellGet -d /usr/lib/powershell/Modules/PowerShellGet && \
     rm -f PowerShellGet
 
-# Add the PowerCLI Example Scripts and Modules
-RUN git clone https://github.com/vmware/PowerCLI-Example-Scripts && \
-    mv ./PowerCLI-Example-Scripts/Modules/* /usr/local/share/powershell/Modules/
-
 # Install VMware modules from PSGallery
-SHELL ["pwsh", "-command"]
+SHELL [ "pwsh", "-command" ]
 RUN Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
 RUN Install-Module VMware.PowerCLI,PowerNSX,PowervRA
 
-CMD ["pwsh"]
+# Add the PowerCLI Example Scripts and Modules
+SHELL [ "bash", "-c"]
+RUN git clone https://github.com/vmware/PowerCLI-Example-Scripts && \
+    mv ./PowerCLI-Example-Scripts/Modules/* /usr/local/share/powershell/Modules/
+
+CMD [ "pwsh" ]
