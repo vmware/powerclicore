@@ -7,9 +7,8 @@ ENV TERM linux
 RUN echo "/usr/bin/pwsh" >> /etc/shells && \
     echo "/bin/pwsh" >> /etc/shells
 
-# Install PowerShell on Photon 
-RUN tdnf install -y powershell unzip && \
-    tdnf clean all
+# Install PowerShell and unzip on Photon
+RUN tdnf install -y powershell unzip
 
 # Set working directory so stuff doesn't end up in /
 WORKDIR /root
@@ -37,5 +36,9 @@ RUN curl -o ./PowerCLI-Example-Scripts.zip -J -L https://github.com/vmware/Power
     rm -f PowerCLI-Example-Scripts.zip && \
     mv ./PowerCLI-Example-Scripts-master ./PowerCLI-Example-Scripts && \
     mv ./PowerCLI-Example-Scripts/Modules/* /usr/local/share/powershell/Modules/
+
+# Final clean up
+RUN tdnf erase -y unzip && \
+    tdnf clean all
 
 CMD ["/bin/pwsh"]
