@@ -23,10 +23,16 @@ RUN curl -O -J -L https://www.powershellgallery.com/api/v2/package/PowerShellGet
     unzip PowerShellGet -d /usr/lib/powershell/Modules/PowerShellGet && \
     rm -f PowerShellGet
 
+# Workaround for https://github.com/vmware/photon/issues/752
+RUN mkdir -p /usr/lib/powershell/ref/ && ln -s /usr/lib/powershell/*.dll /usr/lib/powershell/ref/
+
 # Install VMware modules from PSGallery
 SHELL [ "pwsh", "-command" ]
 RUN Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
 RUN Install-Module VMware.PowerCLI,PowerNSX,PowervRA
+
+# On by default to suppress nagging. Set to $false if you don't want to help us make PowerCLI better.
+RUN Set-PowerCLIConfiguration -ParticipateInCeip $true -Confirm:$false
 
 # Add the PowerCLI Example Scripts and Modules
 # using ZIP instead of a git pull to save at least 100MB
