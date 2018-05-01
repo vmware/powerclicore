@@ -32,7 +32,8 @@ RUN Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
 RUN Install-Module VMware.PowerCLI,PowerNSX,PowervRA
 
 # On by default to suppress nagging. Set to $false if you don't want to help us make PowerCLI better.
-RUN Set-PowerCLIConfiguration -ParticipateInCeip $true -Confirm:$false
+# TODO: Investigate why we can't set this to either true or false.
+# RUN Set-PowerCLIConfiguration -ParticipateInCeip $true -Confirm:$false
 
 # Add the PowerCLI Example Scripts and Modules
 # using ZIP instead of a git pull to save at least 100MB
