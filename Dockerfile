@@ -42,7 +42,7 @@ RUN curl -o ./PowerCLI-Example-Scripts.zip -J -L https://github.com/vmware/Power
     unzip PowerCLI-Example-Scripts.zip && \
     rm -f PowerCLI-Example-Scripts.zip && \
     mv ./PowerCLI-Example-Scripts-master ./PowerCLI-Example-Scripts && \
-    mv ./PowerCLI-Example-Scripts/Modules/* /usr/local/share/powershell/Modules/
+    mv ./PowerCLI-Example-Scripts/Modules/* /usr/lib/powershell/Modules/
 
 # Final clean up
 RUN tdnf erase -y unzip && \
