@@ -27,6 +27,6 @@ Or to just execute a local script run:
 
     docker run --rm --entrypoint="/usr/bin/pwsh" -v ${PWD}/scripts:/tmp/scripts vmware/powerclicore /tmp/scripts/sample1.ps1
 
-Where "/scripts" is a local folder cointaining your scripts.
+Where "/scripts" is a local folder containing your scripts.
 
 More options for working with and running the container can be found here: (http://www.virtuallyghetto.com/2016/10/5-different-ways-to-run-powercli-script-using-powercli-core-docker-container.html)
