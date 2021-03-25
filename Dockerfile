@@ -30,8 +30,11 @@ RUN echo "/usr/bin/pwsh" >> /etc/shells && \
     mv ./PowerCLI-Example-Scripts-* ./PowerCLI-Example-Scripts && \
     mv ./PowerCLI-Example-Scripts/Modules/* /usr/lib/powershell/Modules/ && \
     find / -name "net45" | xargs rm -rf && \
+    echo '$ProgressPreference = "SilentlyContinue"' > /root/.config/powershell/Microsoft.PowerShell_profile.ps1 && \
     tdnf erase -y unzip && \
     tdnf clean all
+
+
 
 
 CMD ["/bin/pwsh"]
