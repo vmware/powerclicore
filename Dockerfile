@@ -18,7 +18,7 @@ RUN echo "/usr/bin/pwsh" >> /etc/shells && \
     ln -s /usr/lib/libcrypto.so.1.1 /usr/lib/powershell/libcrypto.so.1.0.0 && \
     pwsh -c "Enable-ExperimentalFeature PSDesiredStateConfiguration.InvokeDscResource" && \
     pwsh -c "Set-PSRepository -Name PSGallery -InstallationPolicy Trusted" && \
-    pwsh -c "\$ProgressPreference = \"SilentlyContinue\"; Install-Module VMware.PowerCLI -RequiredVersion 12.2.0.17538434" && \
+    pwsh -c "\$ProgressPreference = \"SilentlyContinue\"; Install-Module VMware.PowerCLI" && \
     pwsh -c "\$ProgressPreference = \"SilentlyContinue\"; Install-Module VMware.vSphereDSC" && \
     pwsh -c "\$ProgressPreference = \"SilentlyContinue\"; Install-Module VMware.PSDesiredStateConfiguration" && \
     pwsh -c "\$ProgressPreference = \"SilentlyContinue\"; Install-Module VMware.vSphere.SsoAdmin" && \
@@ -33,8 +33,5 @@ RUN echo "/usr/bin/pwsh" >> /etc/shells && \
     echo '$ProgressPreference = "SilentlyContinue"' > /root/.config/powershell/Microsoft.PowerShell_profile.ps1 && \
     tdnf erase -y unzip && \
     tdnf clean all
-
-
-
 
 CMD ["/bin/pwsh"]
