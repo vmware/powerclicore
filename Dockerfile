@@ -12,6 +12,7 @@ RUN echo "/usr/bin/pwsh" >> /etc/shells && \
     tdnf install -y wget tar icu powershell git unzip && \
     wget https://github.com/PowerShell/PowerShell/releases/download/v7.1.1/powershell-7.1.1-linux-x64.tar.gz && \
     tar -xvf /root/powershell-7.1.1-linux-x64.tar.gz -C /usr/lib/powershell && \
+    rm -f /root/powershell-7.1.1-linux-x64.tar.gz && \
     rm /usr/lib/powershell/libssl.so.1.0.0 && \
     rm /usr/lib/powershell/libcrypto.so.1.0.0 && \
     ln -s /usr/lib/libssl.so.1.1 /usr/lib/powershell/libssl.so.1.0.0 && \
