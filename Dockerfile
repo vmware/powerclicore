@@ -2,7 +2,7 @@ FROM photon:3.0
 
 LABEL authors="renoufa@vmware.com,jaker@vmware.com,dmilov@vmware.com"
 
-ENV TERM linux-basic
+ENV TERM linux
 
 WORKDIR /root
 
