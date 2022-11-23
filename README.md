@@ -37,12 +37,12 @@ docker run --rm -it vmware/powerclicore
 ```
 
 Run a local script:
-
+docker run --rm --entrypoint="/usr/bin/pwsh" -v ${PWD}
 ```bash
-docker run --rm --entrypoint="/usr/bin/pwsh" -v /users/rainpole/pwsh:/tmp/shared tenthirtyam/powerclicore /tmp/shared/example.ps1
+docker run --rm --entrypoint="/usr/bin/pwsh" -v ~/scripts:/tmp/scripts vmware/powerclicore /tmp/scripts/example.ps1
 ```
 
-Where `/users/rainpole/pwsh` is the local directory path for your PowerShell scripts.
+Where `~/scripts` is the local directory path for your PowerShell scripts.
 
 For more methods, read [5 ways to a run PowerCLI script using the PowerCLI Docker Container][community-wlam-powerclicore] by William Lam.
 
@@ -51,5 +51,6 @@ For more methods, read [5 ways to a run PowerCLI script using the PowerCLI Docke
 [vmware-vsphere-dsc]: https://github.com/vmware/dscr-for-vmware
 [powervcf]: https://vmware.github.io/powershell-module-for-vmware-cloud-foundation
 [powernsx]: https://powernsx.github.io
+[powervra]: https://github.com/jakkulabs/PowervRA
 [powercli-examples]: https://github.com/vmware/PowerCLI-Example-Scripts
 [community-wlam-powerclicore]: https://williamlam.com/2016/10/5-different-ways-to-run-powercli-script-using-powercli-core-docker-container.html
