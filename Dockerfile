@@ -1,6 +1,6 @@
 FROM mcr.microsoft.com/powershell
 
-LABEL authors="nklinkachev@vmware.com"
+LABEL authors="renoufa@vmware.com,jaker@vmware.com,dmilov@vmware.com,nklinkachev@vmware.com"
 
 # Set PowerShell Gallery Repository
 
@@ -11,14 +11,12 @@ RUN pwsh -c 'Set-PSRepository -Name PSGallery -InstallationPolicy Trusted'
 
 WORKDIR /root
 
-ARG DEBIAN_FRONTEND=noninteractive
-ENV TZ=Etc/UTC
-
 RUN apt-get update && \
     apt-get install -y --no-install-recommends git tzdata dnsutils && \
     git clone https://github.com/vmware/PowerCLI-Example-Scripts.git && \
-    mv ./PowerCLI-Example-Scripts/Modules/* ~/.local/share/powershell/Modules/ && \
-    rm -rf ~/.local/share/powershell/Modules/VMware.vSphere.SsoAdmin && \
+    mv ./PowerCLI-Example-Scripts-* ./PowerCLI-Example-Scripts && \
+    mv ./PowerCLI-Example-Scripts/Modules/* /usr/lib/powershell/Modules/ && \
+    rm -rf /usr/lib/powershell/Modules/VMware.vSphere.SsoAdmin && \
     rm -rf ./PowerCLI-Example-Scripts && \
     apt-get remove -y git
 
@@ -27,9 +25,10 @@ RUN apt-get update && \
 RUN pwsh -c "Install-Module -Name PSDesiredStateConfiguration" && \
     pwsh -c "Enable-ExperimentalFeature PSDesiredStateConfiguration.InvokeDscResource" && \
     pwsh -c "\$ProgressPreference = \"SilentlyContinue\"; Install-Module -Name VMware.PowerCLI" && \
-    pwsh -c "Set-PowerCLIConfiguration -Scope AllUsers -ParticipateInCEIP \$false -Confirm:\$false" && \
     pwsh -c "\$ProgressPreference = \"SilentlyContinue\"; Install-Module -Name VMware.vSphereDSC" && \
     pwsh -c "\$ProgressPreference = \"SilentlyContinue\"; Install-Module -Name VMware.CloudServices" && \
     pwsh -c "\$ProgressPreference = \"SilentlyContinue\"; Install-Module -Name VMware.vSphere.SsoAdmin" && \
     pwsh -c "\$ProgressPreference = \"SilentlyContinue\"; Install-Module -Name PowerVCF" && \
-    pwsh -c "\$ProgressPreference = \"SilentlyContinue\"; Install-Module -Name PowerNSX"
+    pwsh -c "\$ProgressPreference = \"SilentlyContinue\"; Install-Module -Name PowerNSX" && \
+    pwsh -c "\$ProgressPreference = \"SilentlyContinue\"; Install-Module -Name PowervRA && \
+    find / -name "net45" | xargs rm -rf
