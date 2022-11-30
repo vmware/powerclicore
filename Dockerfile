@@ -10,7 +10,7 @@ RUN pwsh -c 'Set-PSRepository -Name PSGallery -InstallationPolicy Trusted'
 # Note: VMware.vSphere.SsoAdmin is removed and later installed from the PowerShell Gallery.
 
 WORKDIR /root
-ARG DEBIAN_FRONTEND=noninteractive
+ENV TZ=Etc/UTC
 
 RUN apt-get update && \
     apt-get install -y --no-install-recommends git tzdata dnsutils && \
