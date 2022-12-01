@@ -12,7 +12,8 @@ RUN pwsh -c 'Set-PSRepository -Name PSGallery -InstallationPolicy Trusted'
 WORKDIR /root
 
 ENV TZ=Etc/UTC
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends tzdata
+RUN apt-get update && \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends tzdata
 
 RUN apt-get update && \
     apt-get install -y --no-install-recommends git dnsutils && \
@@ -35,3 +36,4 @@ RUN pwsh -c "Install-Module -Name PSDesiredStateConfiguration" && \
     pwsh -c "\$ProgressPreference = \"SilentlyContinue\"; Install-Module -Name PowerNSX" && \
     pwsh -c "\$ProgressPreference = \"SilentlyContinue\"; Install-Module -Name PowervRA && \
     find / -name "net45" | xargs rm -rf
+    
