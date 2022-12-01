@@ -10,10 +10,12 @@ RUN pwsh -c 'Set-PSRepository -Name PSGallery -InstallationPolicy Trusted'
 # Note: VMware.vSphere.SsoAdmin is removed and later installed from the PowerShell Gallery.
 
 WORKDIR /root
+
 ENV TZ=Etc/UTC
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends tzdata
 
 RUN apt-get update && \
-    apt-get install -y --no-install-recommends git tzdata dnsutils && \
+    apt-get install -y --no-install-recommends git dnsutils && \
     git clone https://github.com/vmware/PowerCLI-Example-Scripts.git && \
     mv ./PowerCLI-Example-Scripts-* ./PowerCLI-Example-Scripts && \
     mv ./PowerCLI-Example-Scripts/Modules/* /usr/lib/powershell/Modules/ && \
