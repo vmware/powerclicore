@@ -18,6 +18,7 @@ RUN apt-get update && \
 RUN apt-get update && \
     apt-get install -y --no-install-recommends git dnsutils && \
     git clone https://github.com/vmware/PowerCLI-Example-Scripts.git && \
+    mkdir --parents /usr/local/share/powershell/Modules && \
     mv ./PowerCLI-Example-Scripts/Modules/* /usr/local/share/powershell/Modules/ && \
     rm -rf /usr/local/share/powershell/Modules/VMware.vSphere.SsoAdmin && \
     apt-get remove -y git
