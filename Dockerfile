@@ -33,6 +33,6 @@ RUN pwsh -c "Install-Module -Name PSDesiredStateConfiguration" && \
     pwsh -c "\$ProgressPreference = \"SilentlyContinue\"; Install-Module -Name VMware.vSphere.SsoAdmin" && \
     pwsh -c "\$ProgressPreference = \"SilentlyContinue\"; Install-Module -Name PowerVCF" && \
     pwsh -c "\$ProgressPreference = \"SilentlyContinue\"; Install-Module -Name PowerNSX" && \
-    pwsh -c "\$ProgressPreference = \"SilentlyContinue\"; Install-Module -Name PowervRA && \
+    pwsh -c "\$ProgressPreference = \"SilentlyContinue\"; Install-Module -Name PowervRA" && \
     find / -name "net45" | xargs rm -rf
     
