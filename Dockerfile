@@ -1,32 +1,38 @@
-FROM photon:3.0
+FROM mcr.microsoft.com/powershell
 
-LABEL authors="renoufa@vmware.com,jaker@vmware.com,dmilov@vmware.com"
+LABEL authors="renoufa@vmware.com,jaker@vmware.com,dmilov@vmware.com,nklinkachev@vmware.com"
 
-ENV TERM linux
+# Set PowerShell Gallery Repository
+
+RUN pwsh -c 'Set-PSRepository -Name PSGallery -InstallationPolicy Trusted'
+
+# Add Commuunity Examples
+# Note: VMware.vSphere.SsoAdmin is removed and later installed from the PowerShell Gallery.
 
 WORKDIR /root
 
-# Set terminal. If we don't do this, weird readline things happen.
-RUN echo "/usr/bin/pwsh" >> /etc/shells && \
-    echo "/bin/pwsh" >> /etc/shells && \
-    tdnf install -y wget tar icu powershell-7.1.5-3.ph3 git unzip tzdata && \
-    pwsh -c "Set-PSRepository -Name PSGallery -InstallationPolicy Trusted" && \
-    pwsh -c "Install-Module -Name PSDesiredStateConfiguration" && \
-    pwsh -c "Enable-ExperimentalFeature PSDesiredStateConfiguration.InvokeDscResource" && \
-    pwsh -c "\$ProgressPreference = \"SilentlyContinue\"; Install-Module VMware.PowerCLI" && \
-    pwsh -c "\$ProgressPreference = \"SilentlyContinue\"; Install-Module VMware.vSphereDSC" && \
-    pwsh -c "\$ProgressPreference = \"SilentlyContinue\"; Install-Module VMware.PSDesiredStateConfiguration" && \
-    pwsh -c "\$ProgressPreference = \"SilentlyContinue\"; Install-Module VMware.vSphere.SsoAdmin" && \
-    pwsh -c "\$ProgressPreference = \"SilentlyContinue\"; Install-Module PowerNSX -RequiredVersion 3.0.1174" && \
-    pwsh -c "\$ProgressPreference = \"SilentlyContinue\"; Install-Module PowervRA -RequiredVersion 3.6.0" && \
-    curl -o ./PowerCLI-Example-Scripts.zip -J -L https://github.com/vmware/PowerCLI-Example-Scripts/archive/03272c1d2db26a525b31c930e3bf3d20d34468e0.zip && \
-    unzip PowerCLI-Example-Scripts.zip && \
-    rm -f PowerCLI-Example-Scripts.zip && \
-    mv ./PowerCLI-Example-Scripts-* ./PowerCLI-Example-Scripts && \
-    mv ./PowerCLI-Example-Scripts/Modules/* /usr/lib/powershell/Modules/ && \
-    find / -name "net45" | xargs rm -rf && \
-    echo '$ProgressPreference = "SilentlyContinue"' > /root/.config/powershell/Microsoft.PowerShell_profile.ps1 && \
-    tdnf erase -y unzip && \
-    tdnf clean all
+ENV TZ=Etc/UTC
+RUN apt-get update && \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends tzdata
 
-CMD ["/bin/pwsh"]
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends git dnsutils && \
+    git clone https://github.com/vmware/PowerCLI-Example-Scripts.git && \
+    mkdir --parents /usr/local/share/powershell/Modules && \
+    mv ./PowerCLI-Example-Scripts/Modules/* /usr/local/share/powershell/Modules/ && \
+    rm -rf /usr/local/share/powershell/Modules/VMware.vSphere.SsoAdmin && \
+    apt-get remove -y git
+
+# Install PowerShell Modules
+
+RUN pwsh -c "Install-Module -Name PSDesiredStateConfiguration" && \
+    pwsh -c "Enable-ExperimentalFeature PSDesiredStateConfiguration.InvokeDscResource" && \
+    pwsh -c "\$ProgressPreference = \"SilentlyContinue\"; Install-Module -Name VMware.PowerCLI" && \
+    pwsh -c "\$ProgressPreference = \"SilentlyContinue\"; Install-Module -Name VMware.vSphereDSC" && \
+    pwsh -c "\$ProgressPreference = \"SilentlyContinue\"; Install-Module -Name VMware.CloudServices" && \
+    pwsh -c "\$ProgressPreference = \"SilentlyContinue\"; Install-Module -Name VMware.vSphere.SsoAdmin" && \
+    pwsh -c "\$ProgressPreference = \"SilentlyContinue\"; Install-Module -Name PowerVCF" && \
+    pwsh -c "\$ProgressPreference = \"SilentlyContinue\"; Install-Module -Name PowerNSX" && \
+    pwsh -c "\$ProgressPreference = \"SilentlyContinue\"; Install-Module -Name PowervRA" && \
+    find / -name "net45" | xargs rm -rf
+    
