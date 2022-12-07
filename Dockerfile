@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/powershell
+FROM mcr.microsoft.com/powershell:lts-ubuntu-20.04
 
 LABEL authors="renoufa@vmware.com,jaker@vmware.com,dmilov@vmware.com,nklinkachev@vmware.com"
 
@@ -36,3 +36,14 @@ RUN pwsh -c "Install-Module -Name PSDesiredStateConfiguration" && \
     pwsh -c "\$ProgressPreference = \"SilentlyContinue\"; Install-Module -Name PowervRA" && \
     find / -name "net45" | xargs rm -rf
     
+# Install python3.7 from source
+
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends wget build-essential zlib1g-dev && \
+    cd /usr/src && \
+    wget https://www.python.org/ftp/python/3.7.9/Python-3.7.9.tgz && \
+    tar xzf Python-3.7.9.tgz && \
+    cd Python-3.7.9 && \
+    ./configure  && \
+    make && \
+    make install
