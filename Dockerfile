@@ -26,9 +26,9 @@ RUN apt-get update && \
 
 
 # Install PowerShell Modules
+## Invoke-DscResource is no longer an experimental feature starting with PSDesiredStateConfiguration version 2.0.6
 
-RUN pwsh -c "Install-Module -Name PSDesiredStateConfiguration" && \
-    pwsh -c "Enable-ExperimentalFeature PSDesiredStateConfiguration.InvokeDscResource" && \
+RUN pwsh -c "Install-Module PSDesiredStateConfiguration -MinimumVersion 2.0.6" && \
     pwsh -c "\$ProgressPreference = \"SilentlyContinue\"; Install-Module -Name VMware.PowerCLI" && \
     pwsh -c "\$ProgressPreference = \"SilentlyContinue\"; Install-Module -Name VMware.vSphereDSC" && \
     pwsh -c "\$ProgressPreference = \"SilentlyContinue\"; Install-Module -Name VMware.CloudServices" && \
