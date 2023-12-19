@@ -1,6 +1,6 @@
 FROM mcr.microsoft.com/powershell:lts-ubuntu-20.04
 
-LABEL authors="renoufa@vmware.com,jaker@vmware.com,dmilov@vmware.com,nklinkachev@vmware.com"
+LABEL authors="atanas-dimitrov.atanasov@broadcom.com"
 
 # Set PowerShell Gallery Repository
 
